@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de Conexión API</title>
+</head>
+<body>
+    <h1>Test de Conexión a API</h1>
+    <button onclick="probarAPI()">Probar API</button>
+    <p id="resultado">Esperando prueba...</p>
+
+    <script>
+        async function probarAPI() {
+            try {
+                const response = await fetch("http://localhost/eduplay/api.php?q=ping");
+                const data = await response.json();
+                document.getElementById("resultado").textContent = "Respuesta: " + JSON.stringify(data);
+            } catch (error) {
+                document.getElementById("resultado").textContent = "Error: " + error;
+            }
+        }
+    </script>
+</body>
+</html>
